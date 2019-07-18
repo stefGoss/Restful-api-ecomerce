@@ -22,7 +22,7 @@ class CreateReviewsTable extends Migration
             $table->text('review');
             $table->integer('star');
             
-            $table->integer('discount');
+        
 
 
             $table->timestamps();
