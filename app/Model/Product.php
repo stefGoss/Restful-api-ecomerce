@@ -4,6 +4,7 @@ namespace App\Model;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model;
+use App\Model\Review;
 
 class Product extends Model
 {
@@ -13,7 +14,9 @@ class Product extends Model
         'name', 'price', 'stock','discount','detail'
     ];
 
-
+public function reviews(){
+return $this->hasMany(Review::class);
+}
     
 
 
