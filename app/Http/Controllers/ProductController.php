@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Model\Product;
 use Illuminate\Http\Request;
 
+
+use App\Http\Resources\Product\ProductCollection;
+use App\Http\Resources\Product\ProductResource;
+
 class ProductController extends Controller
 {
     /**
@@ -14,7 +18,12 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        //return ProductResource::collection(Product::all());
+        
+        //return new ProductCollection(Product::all());
+    
+       // return ProductCollection::collection(Product::all());
+        return ProductCollection::collection(Product::paginate(10));
     }
 
     /**
@@ -35,7 +44,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
@@ -46,8 +55,13 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return new ProductResource($product);
     }
+
+
+
+
+
 
     /**
      * Show the form for editing the specified resource.
