@@ -149,5 +149,11 @@ public function __construct(){
     public function destroy(Product $product)
     {
         $product->delete();
+
+        return response([
+            'data'=>['msg'=>'produit deleted']
+        ],Response::HTTP_CREATED); 
+
+
     }
 }
