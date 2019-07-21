@@ -70,3 +70,15 @@ class RegisterController extends Controller
         ]);
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
