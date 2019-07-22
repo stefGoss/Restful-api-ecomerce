@@ -11,7 +11,7 @@ class Review extends Model
     use Notifiable;
 
     protected $fillable = [
-        'name', 'product_id', 'review','customer','star'
+        'review','customer','star'
     ];
 
     public function product(){

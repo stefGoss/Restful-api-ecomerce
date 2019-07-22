@@ -10,6 +10,7 @@ use App\Http\Resources\Product\ProductCollection;
 use App\Http\Resources\Product\ProductResource;
 use App\Http\Requests\ProductRequest;
 
+use Auth;
 class ProductController extends Controller
 {
 
@@ -40,6 +41,10 @@ public function __construct(){
     {
         //
     }
+
+
+
+    
 
     /**
      * Store a newly created resource in storage.
@@ -128,14 +133,23 @@ public function __construct(){
     public function update(Request $request, Product $product)
     {
 
+        if (Auth::id()==$product->user_id) {
+            $product->update($request->all());
 
-       $product->update($request->all());
+            return response([
+                'data'=>new ProductResource($product)
+            ],Response::HTTP_CREATED); 
+        }
 
+      
+else {
+    return response([
+        'error'=>'product doesnt belong to current user'
+    ],Response::HTTP_NOT_FOUND); 
+}
          // return response()->json(new ProductResource($product), 200); 
 
-           return response([
-              'data'=>new ProductResource($product)
-          ],Response::HTTP_CREATED); 
+         
 
       
     }

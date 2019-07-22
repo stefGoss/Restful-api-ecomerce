@@ -12,19 +12,21 @@ class CreateProductsTable extends Migration
      * @return void
      */
     public function up()
+    {
+        Schema::create('products', function (Blueprint $table) {
      $table->string('name'); 
+     $table->integer('user_id')->unsigned()->index();
             $table->text('detail');
             $table->integer('price');
             $table->integer('stock');
-            $table->integer('discount');   {
-        Schema::create('products', function (Blueprint $table) {
+            $table->integer('discount');   
+        
             $table->increments('id');
         
 
             $table->timestamps();
         });
-    }
-
+    } 
     /**
      * Reverse the migrations.
      *
